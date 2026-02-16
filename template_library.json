@@ -1,0 +1,433 @@
+{
+  "hvac_seasonal_tuneup": {
+    "id": "hvac_seasonal_tuneup",
+    "name": "Seasonal HVAC Tune-Up Offer",
+    "category": "maintenance",
+    "subject": "{{first_name}}, Is Your AC Ready for Summer? (Free Checkup)",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>Hope you're doing well! I'm reaching out because I noticed you're a homeowner in {{city}}, and with the hot summer approaching, I wanted to offer you something valuable.</p>
+
+<p><strong>We're offering FREE 21-point HVAC inspections</strong> to homeowners in your neighborhood. No obligation, no sales pitch—just a professional checkup to make sure your system is running efficiently.</p>
+
+<p><strong>Why this matters for your home:</strong></p>
+<ul>
+<li>A well-maintained AC uses up to 15% less energy (lower bills!)</li>
+<li>Catch small issues before they become $1,000+ repairs</li>
+<li>Extend your system's lifespan by years</li>
+</ul>
+
+<p>We've already helped 200+ families in {{zip_code}} stay cool this summer. The inspection takes about 30 minutes, and we'll give you a straightforward report on your system's health.</p>
+
+<p><strong>Would you like to schedule your free checkup?</strong> Just reply with a few times that work for you, or call/text me directly.</p>
+
+<p>Best regards,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567<br>
+🌐 www.comfortair-hvac.com</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. We only have 15 free inspection slots remaining for this month. Reply soon to secure yours!</p>
+</body>
+</html>",
+    "variables": ["first_name", "city", "zip_code"],
+    "tone": "friendly_professional",
+    "cta": "reply_for_appointment"
+  },
+  
+  "hvac_system_replacement": {
+    "id": "hvac_system_replacement",
+    "name": "System Replacement - Older Homes",
+    "category": "sales",
+    "subject": "{{first_name}}, Is Your {{home_age}} Home's AC Costing You Money?",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>I was looking at homes in {{city}} and noticed many in your area were built around the same time as yours. If your HVAC system is original (or 15+ years old), it could be costing you more than you think.</p>
+
+<p><strong>Here's what most homeowners don't realize:</strong></p>
+<ul>
+<li>Old systems can waste 30-50% more energy than modern units</li>
+<li>Repair costs add up fast—often $500+ per visit</li>
+<li>New systems qualify for up to $2,000 in federal tax credits</li>
+</ul>
+
+<p><strong>We're currently offering FREE replacement estimates</strong> with no pressure. You'll get:</p>
+<ul>
+<li>Exact pricing for your home (no surprises)</li>
+<li>Energy savings calculation</li>
+<li>Financing options if needed</li>
+<li>Same-day quotes</li>
+</ul>
+
+<p>Many of your neighbors in {{zip_code}} have already upgraded and are seeing $100-200/month savings on their energy bills.</p>
+
+<p><strong>Interested in a free estimate?</strong> Just reply to this email or text me at (555) 123-4567.</p>
+
+<p>Thanks,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. We're running a spring promotion with $500 off full system replacements. Limited time only.</p>
+</body>
+</html>",
+    "variables": ["first_name", "city", "zip_code", "home_age"],
+    "tone": "consultative",
+    "cta": "free_estimate"
+  },
+  
+  "hvac_emergency_repair": {
+    "id": "hvac_emergency_repair",
+    "name": "Emergency Repair - Hot Weather",
+    "category": "urgent",
+    "subject": "{{first_name}}, AC Not Keeping Up? We Can Help Today",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>With the temperature climbing in {{city}}, I've been hearing from a lot of homeowners whose AC units are struggling to keep up.</p>
+
+<p>If you're dealing with:</p>
+<ul>
+<li>AC blowing warm air</li>
+<li>Unit running constantly but not cooling</li>
+<li>Strange noises or smells</li>
+<li>Higher than normal electric bills</li>
+</ul>
+
+<p><strong>We offer same-day service calls</strong> to diagnose the issue fast. Most repairs are completed in a single visit, and we stock common parts for all major brands.</p>
+
+<p><strong>Our service call includes:</strong></p>
+<ul>
+<li>Full diagnostic ($89 value—waived with repair)</li>
+<li>Upfront pricing before any work</li>
+<li>1-year warranty on all repairs</li>
+</ul>
+
+<p><strong>Need help today?</strong> Call or text (555) 123-4567 and mention this email for priority scheduling.</p>
+
+<p>Stay cool,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567<br>
+⏰ Same-day service available</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "urgent_helpful",
+    "cta": "call_now"
+  },
+  
+  "hvac_maintenance_plan": {
+    "id": "hvac_maintenance_plan",
+    "name": "Annual Maintenance Membership",
+    "category": "membership",
+    "subject": "{{first_name}}, Save 20% on HVAC Repairs (VIP Program)",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>I wanted to personally invite you to join our <strong>Comfort Club VIP Program</strong>—it's designed for homeowners in {{city}} who want peace of mind and real savings.</p>
+
+<p><strong>Here's what members get:</strong></p>
+<ul>
+<li><strong>2 tune-ups per year</strong> (spring AC check, fall heat check)</li>
+<li><strong>20% off all repairs</strong> (average savings: $150-400/year)</li>
+<li><strong>Priority scheduling</strong> (same-day when available)</li>
+<li><strong>No overtime charges</strong> ever</li>
+<li><strong>Extended equipment warranties</strong></li>
+</ul>
+
+<p>The program pays for itself with just one repair. Plus, regular maintenance prevents 85% of breakdowns.</p>
+
+<p><strong>Membership is just $19.99/month</strong> (or $199/year if paid upfront—save $40).</p>
+
+<p>We have 50 spots available for {{zip_code}} area residents. Would you like me to send you more details or answer any questions?</p>
+
+<p>Best,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. Join this month and get your first tune-up FREE (a $129 value).</p>
+</body>
+</html>",
+    "variables": ["first_name", "city", "zip_code"],
+    "tone": "value_focused",
+    "cta": "learn_more_membership"
+  },
+  
+  "hvac_air_quality": {
+    "id": "hvac_air_quality",
+    "name": "Indoor Air Quality Check",
+    "category": "addon",
+    "subject": "Is Your Home's Air Making You Sick? (Free IAQ Test)",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>Quick question: When was the last time you thought about the air quality in your {{city}} home?</p>
+
+<p>Most homeowners don't realize that <strong>indoor air can be 2-5x more polluted</strong> than outdoor air. If you or your family deal with allergies, asthma, or frequent colds, your HVAC system might be part of the problem.</p>
+
+<p><strong>We're offering FREE indoor air quality assessments</strong> this month. We'll test for:</p>
+<ul>
+<li>Dust, pollen, and allergen levels</li>
+<li>Humidity imbalances</li>
+<li>Airflow issues</li>
+<li>Filter efficiency</li>
+</ul>
+
+<p><strong>Simple solutions can include:</strong></p>
+<ul>
+<li>High-efficiency air filters (MERV 13+)</li>
+<li>UV air purifiers (kills 99% of bacteria/viruses)</li>
+<li>Whole-home dehumidifiers</li>
+<li>Duct cleaning and sealing</li>
+</ul>
+
+<p>The assessment is completely free with no obligation. Takes about 20 minutes.</p>
+
+<p><strong>Want to breathe easier?</strong> Reply to schedule your free air quality check.</p>
+
+<p>Thanks,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "health_conscious",
+    "cta": "free_assessment"
+  },
+  
+  "hvac_follow_up": {
+    "id": "hvac_follow_up",
+    "name": "Follow-Up After Quote",
+    "category": "followup",
+    "subject": "Quick follow-up, {{first_name}}",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>I sent over that estimate a few days ago and wanted to check in. No pressure at all—I know these decisions take time.</p>
+
+<p>A couple of quick questions:</p>
+<ul>
+<li>Did the quote cover everything you were expecting?</li>
+<li>Any questions about the equipment or timeline?</li>
+<li>Want me to look at financing options to make it more manageable?</li>
+</ul>
+
+<p>I'm here to help either way. If now's not the right time, just let me know and I'll follow up in a few months.</p>
+
+<p>Thanks,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+</body>
+</html>",
+    "variables": ["first_name"],
+    "tone": "gentle_followup",
+    "cta": "reply_any_questions"
+  },
+  
+  "hvac_testimonial_request": {
+    "id": "hvac_testimonial_request",
+    "name": "Request for Review/Testimonial",
+    "category": "review",
+    "subject": "{{first_name}}, Quick Favor?",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>Hope your new system is keeping you comfortable! It's been a few weeks since we completed the installation.</p>
+
+<p><strong>Quick favor:</strong> Would you mind leaving us a quick review? It really helps other {{city}} homeowners find us when they need HVAC help.</p>
+
+<p>Takes 30 seconds:<br>
+<a href='https://g.page/review-link-here' style='color: #0066cc;'>Leave a Google Review</a></p>
+
+<p>Or just hit reply with a sentence or two about your experience—I'll add it to our website.</p>
+
+<p>Thanks so much!<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. If there's anything about the service that wasn't 5-star worthy, please let me know directly so I can make it right.</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "grateful",
+    "cta": "leave_review"
+  },
+  
+  "hvac_winter_heating_check": {
+    "id": "hvac_winter_heating_check",
+    "name": "Winter Heating System Check",
+    "category": "seasonal",
+    "subject": "{{first_name}}, Don't Get Caught in the Cold (Free Heating Check)",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>Winter is coming to {{city}}, and I've seen too many families left without heat on the coldest nights because they skipped their annual heating check.</p>
+
+<p><strong>We're offering FREE 15-point heating inspections</strong> right now—before the rush hits.</p>
+
+<p><strong>We'll check:</strong></p>
+<ul>
+<li>Heat exchanger for cracks (safety issue!)</li>
+<li>Gas connections and pressure</li>
+<li>Blower motor and belts</li>
+<li>Thermostat calibration</li>
+<li>Air filter condition</li>
+<li>Carbon monoxide levels</li>
+</ul>
+
+<p>Takes 20 minutes. Could save you from a $200+ emergency repair—or worse.</p>
+
+<p><strong>Ready to schedule?</strong> Just reply with your availability or call (555) 123-4567.</p>
+
+<p>Stay warm,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "preventative",
+    "cta": "schedule_check"
+  },
+  
+  "hvac_duct_cleaning": {
+    "id": "hvac_duct_cleaning",
+    "name": "Duct Cleaning Service",
+    "category": "service",
+    "subject": "When's the Last Time You Cleaned Your Air Ducts?",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>Most homeowners in {{city}} have never had their air ducts professionally cleaned. After 10+ years, those ducts can be filled with:</p>
+
+<ul>
+<li>Dust and pet dander</li>
+<li>Mold and mildew</li>
+<li>Pollen and allergens</li>
+<li>Even rodent droppings (gross, but true)</li>
+</ul>
+
+<p><strong>Professional duct cleaning can:</strong></p>
+<ul>
+<li>Reduce allergies and respiratory issues</li>
+<li>Improve airflow (lower energy bills)</li>
+<li>Eliminate musty odors</li>
+<li>Extend HVAC system life</li>
+</ul>
+
+<p><strong>Limited time: $299 whole-home duct cleaning</strong> (normally $499). Includes:</p>
+<ul>
+<li>Full duct system cleaning</li>
+<li>Sanitizing treatment</li>
+<li>Vent covers removed and cleaned</li>
+<li>Before/after photos</li>
+</ul>
+
+<p><strong>Interested?</strong> Reply to book or call (555) 123-4567. We only book 3 cleanings per week to ensure quality.</p>
+
+<p>Thanks,<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "educational",
+    "cta": "book_cleaning"
+  },
+  
+  "hvac_referral_request": {
+    "id": "hvac_referral_request",
+    "name": "Customer Referral Request",
+    "category": "referral",
+    "subject": "$100 for Your Referrals (No Limit!)",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>You were great to work with, and I wanted to let you know about our referral program.</p>
+
+<p><strong>Here's how it works:</strong></p>
+<ul>
+<li>You refer a friend, neighbor, or family member in {{city}}</li>
+<li>They book any service with us</li>
+<li>We send YOU a $100 Visa gift card</li>
+<li>No limit—refer 10 people, get $1,000</li>
+</ul>
+
+<p>We're looking for more great customers like you. Know anyone who needs:</p>
+<ul>
+<li>AC repair or replacement?</li>
+<li>A heating tune-up before winter?</li>
+<li>Duct cleaning?</li>
+</ul>
+
+<p>Just reply with their name and number, and I'll reach out. Or forward this email to them.</p>
+
+<p>Thanks for trusting us with your home!<br>
+<strong>Mike Johnson</strong><br>
+Comfort Air HVAC<br>
+📞 (555) 123-4567</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. Most of our business comes from referrals. We appreciate you spreading the word!</p>
+</body>
+</html>",
+    "variables": ["first_name", "city"],
+    "tone": "appreciative",
+    "cta": "refer_friends"
+  },
+  "b2b_hvac_lead_gen_tool": {
+    "id": "b2b_hvac_lead_gen_tool",
+    "name": "B2B HVAC Lead Generation Tool Sales",
+    "category": "b2b_sales",
+    "subject": "I built something that finds you HVAC leads automatically",
+    "body": "<html>
+<body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
+<p>Hi {{first_name}},</p>
+
+<p>I noticed {{company_name}} has been growing fast (saw your hiring posts). Impressive expansion after {{years_in_business}} years in business.</p>
+
+<p>I built a tool that automates cold email outreach specifically for HVAC contractors like {{company_name}}.</p>
+
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Finds homeowners in your service area with aging HVAC systems</li>
+<li>Sends personalized cold emails on your behalf</li>
+<li>Gets you 5-10 qualified homeowner leads per week</li>
+<li>No more paying HomeAdvisor $100+ per lead</li>
+</ul>
+
+<p>It's working for a few contractors in Arizona already. One guy in Mesa booked 12 appointments in his first week.</p>
+
+<p><strong>Quick 15-min demo this week?</strong> I'll show you exactly how it works and how it could fit {{company_name}}'s growth goals.</p>
+
+<p>I have Tuesday afternoon or Thursday morning open.</p>
+
+<p>Best,<br>
+<strong>{{sender_name}}</strong><br>
+HVAC Intel<br>
+📞 {{sender_phone}}</p>
+
+<p style='font-size: 12px; color: #666; margin-top: 30px;'>P.S. Only taking on 3 more contractors this month to ensure quality.</p>
+</body>
+</html>",
+    "variables": ["first_name", "company_name", "years_in_business", "sender_name", "sender_phone"],
+    "tone": "professional_casual",
+    "cta": "book_demo"
+  }
+}
