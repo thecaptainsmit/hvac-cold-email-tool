@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC Email Automation Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f7fa;
+            color: #1a1a2e;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: #10b981; color: white; }
+        .status-warming { background: #f59e0b; color: white; }
+        .status-paused { background: #ef4444; color: white; }
+        .status-draft { background: #6b7280; color: white; }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .stat-card.blue .icon { background: #dbeafe; }
+        .stat-card.green .icon { background: #d1fae5; }
+        .stat-card.purple .icon { background: #ede9fe; }
+        .stat-card.orange .icon { background: #ffedd5; }
+        .stat-card.red .icon { background: #fee2e2; }
+        .stat-card.teal .icon { background: #ccfbf1; }
+        
+        .stat-card h3 {
+            font-size: 14px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .stat-card .change {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .change.positive { color: #10b981; }
+        .change.negative { color: #ef4444; }
+        
+        /* Section Cards */
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+        
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #6b7280;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        /* Campaign Cards */
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 24px;
+        }
+        
+        .campaign-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+        
+        .campaign-card:hover {
+            border-color: #4f46e5;
+        }
+        
+        .campaign-card .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .campaign-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .campaign-card .template {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .campaign-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .campaign-stat {
+            text-align: center;
+        }
+        
+        .campaign-stat .number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .campaign-stat .label {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        /* Inbox */
+        .inbox-item {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .inbox-item:hover {
+            background: #f9fafb;
+        }
+        
+        .inbox-item.unread {
+            background: #eff6ff;
+        }
+        
+        .inbox-item .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .inbox-item .content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .inbox-item .sender {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .inbox-item .subject {
+            color: #6b7280;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .inbox-item .time {
+            font-size: 13px;
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 24px;
+        }
+        
+        .quick-action {
+            padding: 20px;
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quick-action:hover {
+            border-color: #4f46e5;
+            background: #f5f3ff;
+        }
+        
+        .quick-action .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .quick-action h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .quick-action p {
+            font-size: 13px;
+            color: #6b7280;
+        }
+        
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .campaign-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 HVAC Email Automation</h1>
+            <p>Multi-account cold email system for HVAC contractors | Powered by Instantly-style warmup & sending</p>
+        </header>
+        
+        <!-- Key Stats -->
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="icon">📧</div>
+                <h3>Active Accounts</h3>
+                <div class="value" id="activeAccounts">12</div>
+                <div class="change positive">↑ 3 warming up</div>
+            </div>
+            <div class="stat-card green">
+                <div class="icon">📤</div>
+                <h3>Sent Today</h3>
+                <div class="value" id="sentToday">247</div>
+                <div class="change positive">↑ 12% vs yesterday</div>
+            </div>
+            <div class="stat-card purple">
+                <div class="icon">👁️</div>
+                <h3>Open Rate</h3>
+                <div class="value" id="openRate">34.2%</div>
+                <div class="change positive">↑ 2.1% this week</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="icon">🖱️</div>
+                <h3>Click Rate</h3>
+                <div class="value" id="clickRate">8.7%</div>
+                <div class="change positive">↑ 0.8% this week</div>
+            </div>
+            <div class="stat-card teal">
+                <div class="icon">💬</div>
+                <h3>Replies</h3>
+                <div class="value" id="replies">18</div>
+                <div class="change">3 unread</div>
+            </div>
+            <div class="stat-card red">
+                <div class="icon">📊</div>
+                <h3>Reply Rate</h3>
+                <div class="value" id="replyRate">4.2%</div>
+                <div class="change positive">Industry avg: 2.1%</div>
+            </div>
+        </div>
+        
+        <!-- Two Column Layout -->
+        <div class="two-col">
+            <!-- Active Campaigns -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>🚀 Active Campaigns</h2>
+                    <button class="btn btn-primary">+ New Campaign</button>
+                </div>
+                <div class="campaigns-grid">
+                    <div class="campaign-card">
+                        <div class="header">
+                            <div>
+                                <h3>Summer AC Tune-Up</h3>
+                                <div class="template">hvac_seasonal_tuneup</div>
+                            </div>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="campaign-stats">
+                            <div class="campaign-stat">
+                                <div class="number">1,247</div>
+                                <div class="label">Sent</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">438</div>
+                                <div class="label">Opened</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">89</div>
+                                <div class="label">Clicked</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">12</div>
+                                <div class="label">Replies</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campaign-card">
+                        <div class="header">
+                            <div>
+                                <h3>System Replacement</h3>
+                                <div class="template">hvac_system_replacement</div>
+                            </div>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <div class="campaign-stats">
+                            <div class="campaign-stat">
+                                <div class="number">856</div>
+                                <div class="label">Sent</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">267</div>
+                                <div class="label">Opened</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">45</div>
+                                <div class="label">Clicked</div>
+                            </div>
+                            <div class="campaign-stat">
+                                <div class="number">6</div>
+                                <div class="label">Replies</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unified Inbox -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>📥 Unified Inbox</h2>
+                    <button class="btn btn-secondary">Mark All Read</button>
+                </div>
+                <div class="inbox-item unread">
+                    <div class="avatar">JS</div>
+                    <div class="content">
+                        <div class="sender">John Smith</div>
+                        <div class="subject">Re: Free AC checkup - I'm interested in scheduling</div>
+                    </div>
+                    <div class="time">2 min ago</div>
+                </div>
+                <div class="inbox-item unread">
+                    <div class="avatar">MR</div>
+                    <div class="content">
+                        <div class="sender">Mary Rodriguez</div>
+                        <div class="subject">Re: Is Your AC Ready for Summer? - Quick question about pricing</div>
+                    </div>
+                    <div class="time">15 min ago</div>
+                </div>
+                <div class="inbox-item">
+                    <div class="avatar">DW</div>
+                    <div class="content">
+                        <div class="sender">David Wilson</div>
+                        <div class="subject">Re: System Replacement Estimate - Can you call me tomorrow?</div>
+                    </div>
+                    <div class="time">1 hour ago</div>
+                </div>
+                <div class="inbox-item">
+                    <div class="avatar">SL</div>
+                    <div class="content">
+                        <div class="sender">Sarah Lee</div>
+                        <div class="subject">Re: Free AC checkup - Not interested, please remove</div>
+                    </div>
+                    <div class="time">3 hours ago</div>
+                </div>
+                <div class="inbox-item">
+                    <div class="avatar">RJ</div>
+                    <div class="content">
+                        <div class="sender">Robert Johnson</div>
+                        <div class="subject">Re: Indoor Air Quality Test - Yes, when can you come?</div>
+                    </div>
+                    <div class="time">5 hours ago</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Email Accounts -->
+        <div class="section">
+            <div class="section-header">
+                <h2>📧 Email Accounts</h2>
+                <button class="btn btn-primary">+ Add Account</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Warmup Score</th>
+                            <th>Sent Today</th>
+                            <th>Daily Limit</th>
+                            <th>Health</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>mike@comfortair-hvac.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 150px;">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                                85/100
+                            </td>
+                            <td>42 / 50</td>
+                            <td>50</td>
+                            <td>🟢 Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>service@comfortair-hvac.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 150px;">
+                                    <div class="progress-fill" style="width: 92%;"></div>
+                                </div>
+                                92/100
+                            </td>
+                            <td>38 / 50</td>
+                            <td>50</td>
+                            <td>🟢 Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>estimates@comfortair-hvac.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 150px;">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                                78/100
+                            </td>
+                            <td>45 / 50</td>
+                            <td>50</td>
+                            <td>🟢 Good</td>
+                        </tr>
+                        <tr>
+                            <td>support1@comfortair-hvac.com</td>
+                            <td><span class="status-badge status-warming">Warming</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 150px;">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                                45/100
+                            </td>
+                            <td>12 / 25</td>
+                            <td>25</td>
+                            <td>🟡 Building Rep</td>
+                        </tr>
+                        <tr>
+                            <td>support2@comfortair-hvac.com</td>
+                            <td><span class="status-badge status-warming">Warming</span></td>
+                            <td>
+                                <div class="progress-bar" style="width: 150px;">
+                                    <div class="progress-fill" style="width: 32%;"></div>
+                                </div>
+                                32/100
+                            </td>
+                            <td>8 / 20</td>
+                            <td>20</td>
+                            <td>🟡 Building Rep</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="section">
+            <div class="section-header">
+                <h2>⚡ Quick Actions</h2>
+            </div>
+            <div class="quick-actions">
+                <div class="quick-action">
+                    <div class="icon">📤</div>
+                    <h4>Bulk Import Contacts</h4>
+                    <p>Upload CSV with zip codes & addresses</p>
+                </div>
+                <div class="quick-action">
+                    <div class="icon">🔄</div>
+                    <h4>Run Warmup Cycle</h4>
+                    <p>Send warmup emails between accounts</p>
+                </div>
+                <div class="quick-action">
+                    <div class="icon">📋</div>
+                    <h4>Manage Templates</h4>
+                    <p>Edit HVAC email templates</p>
+                </div>
+                <div class="quick-action">
+                    <div class="icon">📈</div>
+                    <h4>View Full Analytics</h4>
+                    <p>Detailed campaign performance</p>
+                </div>
+                <div class="quick-action">
+                    <div class="icon">⚙️</div>
+                    <h4>Sending Settings</h4>
+                    <p>Configure delays & limits</p>
+                </div>
+                <div class="quick-action">
+                    <div class="icon">🔒</div>
+                    <h4>Domain Health</h4>
+                    <p>Check DNS & authentication</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simulated real-time updates
+        function updateStats() {
+            // In production, fetch from API endpoint
+            const stats = {
+                activeAccounts: Math.floor(Math.random() * 5) + 10,
+                sentToday: Math.floor(Math.random() * 50) + 200,
+                openRate: (Math.random() * 5 + 30).toFixed(1) + '%',
+                clickRate: (Math.random() * 2 + 7).toFixed(1) + '%',
+                replies: Math.floor(Math.random() * 10) + 15,
+                replyRate: (Math.random() * 1 + 3).toFixed(1) + '%'
+            };
+            
+            document.getElementById('activeAccounts').textContent = stats.activeAccounts;
+            document.getElementById('sentToday').textContent = stats.sentToday;
+            document.getElementById('openRate').textContent = stats.openRate;
+            document.getElementById('clickRate').textContent = stats.clickRate;
+            document.getElementById('replies').textContent = stats.replies;
+            document.getElementById('replyRate').textContent = stats.replyRate;
+        }
+        
+        // Update every 30 seconds
+        setInterval(updateStats, 30000);
+        
+        // Button click handlers
+        document.querySelectorAll('.quick-action').forEach(action => {
+            action.addEventListener('click', () => {
+                alert('Feature coming soon! This is the MVP dashboard.');
+            });
+        });
+    </script>
+</body>
+</html>
