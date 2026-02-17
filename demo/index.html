@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DuctDrop Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#0f172a;color:#fff;padding:20px}
+.demo-banner{background:#f97316;padding:10px;text-align:center;font-weight:bold;color:#000}
+.container{max-width:1200px;margin:0 auto}
+.card{background:#1e293b;border-radius:12px;padding:20px;margin:15px 0}
+.stat{display:inline-block;margin:20px;text-align:center}
+.stat-number{font-size:48px;color:#22c55e;font-weight:bold}
+.stat-label{color:#94a3b8}
+.campaign{background:#334155;padding:15px;margin:10px 0;border-radius:8px}
+.status-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+.status-active{background:#22c55e}
+.inbox-item{padding:12px;border-bottom:1px solid #334155}
+.btn{background:#f97316;color:#fff;padding:12px 24px;border:none;border-radius:6px;cursor:pointer;font-size:16px}
+</style>
+</head>
+<body>
+<div class="demo-banner">DEMO MODE - Sample Data</div>
+<div class="container">
+<h1>DuctDrop Dashboard</h1>
+<div class="card">
+<div class="stat"><div class="stat-number">3</div><div class="stat-label">Active Campaigns</div></div>
+<div class="stat"><div class="stat-number">2,847</div><div class="stat-label">Emails Sent</div></div>
+<div class="stat"><div class="stat-number">127</div><div class="stat-label">Replies</div></div>
+<div class="stat"><div class="stat-number">18</div><div class="stat-label">Meetings Booked</div></div>
+</div>
+<div class="card">
+<h2>Active Campaigns</h2>
+<div class="campaign"><span class="status-dot status-active"></span><strong>Toronto Property Managers</strong> - 1,247 sent, 63 replies, 12% reply rate</div>
+<div class="campaign"><span class="status-dot status-active"></span><strong>HOA Board Outreach</strong> - 892 sent, 41 replies, 8% reply rate</div>
+<div class="campaign"><span class="status-dot status-active"></span><strong>Facility Directors</strong> - 708 sent, 23 replies, 11% reply rate</div>
+</div>
+<div class="card">
+<h2>Unified Inbox</h2>
+<div class="inbox-item"><strong>Mike from Highrise Property Mgmt</strong> - "Interested in seasonal maintenance quote for 3 buildings"</div>
+<div class="inbox-item"><strong>Sarah - Toronto Condo Board</strong> - "Can you handle 200+ unit building?"</div>
+<div class="inbox-item"><strong>David - Commercial Realty</strong> - "Send me your pricing for annual contracts"</div>
+</div>
+<div class="card">
+<h2>Warmup Status</h2>
+<p>✅ All 5 sender accounts healthy (95%+ deliverability)</p>
+</div>
+<div style="text-align:center;margin-top:30px">
+<button class="btn">Start Your Campaign</button>
+</div>
+</div>
+</body>
+</html>
