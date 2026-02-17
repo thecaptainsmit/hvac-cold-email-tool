@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuctDrop - Stop Overpaying for HVAC Leads. Get Exclusive Appointments for Less.</title>
+    <style>
+        :root {
+            --orange: #F97316;
+            --orange-dark: #EA580C;
+            --orange-light: #FFF7ED;
+            --blue: #0EA5E9;
+            --blue-dark: #0284C7;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-600: #4B5563;
+            --gray-500: #6B7280;
+            --gray-400: #9CA3AF;
+            --gray-100: #F3F4F6;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --red: #DC2626;
+            --red-light: #FEF2F2;
+            --green: #059669;
+            --green-light: #ECFDF5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            background: var(--orange);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--orange-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section - Problem Focused */
+        .hero {
+            padding: 60px 0 80px;
+            background: var(--red-light);
+            text-align: center;
+            border-bottom: 4px solid var(--red);
+        }
+
+        .pain-badge {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1.15;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span {
+            color: var(--red);
+        }
+
+        .hero-subhead {
+            font-size: 20px;
+            color: var(--gray-700);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-stat-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 32px;
+        }
+
+        .hero-stat-highlight .stat {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--red);
+        }
+
+        .hero-stat-highlight .label {
+            font-size: 14px;
+            color: var(--gray-600);
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 48px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        /* AGITATE Section - Twist the Knife */
+        .agitate {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .agitate-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .agitate-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .agitate-header h2 span {
+            color: var(--orange);
+        }
+
+        .agitate-header p {
+            font-size: 18px;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .agitate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .agitate-card {
+            background: var(--gray-800);
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid var(--red);
+        }
+
+        .agitate-card.danger {
+            border-left-color: var(--red);
+        }
+
+        .agitate-card.warning {
+            border-left-color: var(--orange);
+        }
+
+        .agitate-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .agitate-card h3 .icon {
+            font-size: 20px;
+        }
+
+        .agitate-card p {
+            color: var(--gray-400);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .comparison-box {
+            background: var(--gray-800);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comparison-box h3 {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 32px;
+            color: var(--white);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .comparison-item {
+            background: var(--gray-700);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .comparison-item.bad {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .comparison-item.good {
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+        }
+
+        .comparison-item .percent {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .comparison-item.bad .percent {
+            color: var(--red);
+        }
+
+        .comparison-item.good .percent {
+            color: #34D399;
+        }
+
+        .comparison-item .label {
+            font-size: 16px;
+            color: var(--gray-300);
+            font-weight: 600;
+        }
+
+        .comparison-item .sublabel {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* SOLUTION Section */
+        .solution {
+            background: var(--green-light);
+            padding: 80px 0;
+        }
+
+        .solution-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .solution-badge {
+            display: inline-block;
+            background: var(--green);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .solution-header h2 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .solution-header h2 span {
+            color: var(--green);
+        }
+
+        .solution-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--green);
+        }
+
+        .solution-card .icon-circle {
+            width: 56px;
+            height: 56px;
+            background: var(--green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .solution-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .solution-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .roi-highlight {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .roi-highlight .roi-stat {
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1;
+        }
+
+        .roi-highlight .roi-label {
+            font-size: 20px;
+            color: var(--gray-700);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .roi-highlight .roi-sub {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-top: 8px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .how-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .how-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .how-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0 auto 24px;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Social Proof with CTA */
+        .social-proof-cta {
+            background: var(--gray-50);
+            padding: 80px 0;
+        }
+
+        .social-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .social-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .social-header p {
+            font-size: 18px;
+            color: var(--gray-600);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .testimonial-stars {
+            color: var(--orange);
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: var(--gray-900);
+            font-size: 15px;
+        }
+
+        .author-info p {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        /* Lead Form Section */
+        .lead-form-section {
+            background: var(--white);
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .lead-form-section h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .lead-form-section .subhead {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        .form-trust {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        .trust-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--green);
+        }
+
+        /* Guarantee Bar */
+        .guarantee-bar {
+            background: var(--blue);
+            color: var(--white);
+            padding: 24px 0;
+            text-align: center;
+        }
+
+        .guarantee-bar p {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .guarantee-bar span {
+            font-weight: 800;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--gray-50);
+            padding: 80px 0;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .faq-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-900);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-400);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            display: none;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .final-cta h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .cta-button {
+            background: var(--white);
+            color: var(--orange);
+        }
+
+        .final-cta .cta-button:hover {
+            background: var(--gray-100);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-500);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--gray-400);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-stat-highlight {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .hero-stat-highlight .stat {
+                font-size: 32px;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-form-section {
+                padding: 32px 24px;
+                margin: 0 16px;
+            }
+
+            .agitate-header h2,
+            .solution-header h2,
+            .how-header h2,
+            .faq-header h2,
+            .final-cta h2 {
+                font-size: 28px;
+            }
+
+            section, .agitate, .solution, .how-it-works, .social-proof-cta, .faq, .final-cta {
+                padding: 60px 0;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agitate-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">DuctDrop</a>
+            <a href="#lead-form" class="nav-cta">Get Free Quote</a>
+        </div>
+    </nav>
+
+    <!-- HERO: THE PROBLEM -->
+    <section class="hero">
+        <div class="container">
+            <div class="pain-badge">⚠️ The HVAC Lead Crisis</div>
+            <h1>You're Paying <span>$250-300 Per Lead</span> to HomeAdvisor... For Leads That Go to 4 Other Contractors</h1>
+            <p class="hero-subhead">Every "exclusive" lead you buy gets sold to your competitors. You're in a race to the bottom, fighting over price-shoppers who'll ghost you for a $50 cheaper quote.</p>
+            
+            <div class="hero-stat-highlight">
+                <div class="stat">$300</div>
+                <div class="label">Average cost per lead<br>on HomeAdvisor/Angi</div>
+            </div>
+            
+            <a href="#lead-form" class="cta-button">Stop Overpaying — Get My Free Quote →</a>
+        </div>
+    </section>
+
+    <!-- AGITATE: Twist the Knife -->
+    <section class="agitate">
+        <div class="container">
+            <div class="agitate-header">
+                <h2>Here's What They <span>Don't</span> Tell You</h2>
+                <p>The lead generation industry is built on keeping HVAC contractors dependent and desperate.</p>
+            </div>
+            
+            <div class="agitate-grid">
+                <div class="agitate-card danger">
+                    <h3><span class="icon">🔥</span> Shared = You're Competing Blind</h3>
+                    <p>That "lead" you just paid $300 for? It's been sold to 3-5 other HVAC companies within minutes. You're not the only one calling — you're the fifth. Good luck being memorable.</p>
+                </div>
+                
+                <div class="agitate-card danger">
+                    <h3><span class="icon">📉</span> 10-20% Close Rate (If You're Lucky)</h3>
+                    <p>Shared leads convert at 10-20% because prospects are shopping around. You spend hours chasing leads that were never serious. Your time = worth nothing to lead brokers.</p>
+                </div>
+                
+                <div class="agitate-card warning">
+                    <h3><span class="icon">🎰</span> Feast or Famine Pipeline</h3>
+                    <p>One week you're drowning in leads (that don't close). Next week? Crickets. You can't predict revenue because you're at the mercy of someone else's algorithm. Try planning payroll with that.</p>
+                </div>
+                
+                <div class="agitate-card warning">
+                    <h3><span class="icon">🤥</span> 90% of Agencies Overpromise</h3>
+                    <p>"We'll get you 50 leads a month!" Then deliver garbage. Most marketing agencies have never set foot in an HVAC truck. They don't understand your seasonality, your margins, or your customers.</p>
+                </div>
+                
+                <div class="agitate-card danger">
+                    <h3><span class="icon">💸</span> You're Building Their Business, Not Yours</h3>
+                    <p>Every dollar you spend on HomeAdvisor makes THEIR brand stronger. The customer remembers THEM, not you. Stop renting your pipeline. Own it.</p>
+                </div>
+                
+                <div class="agitate-card warning">
+                    <h3><span class="icon">⏰</span> The "Good Ol' Days" Are Gone</h3>
+                    <p>Word-of-mouth was enough in 2010. In 2025? Your competitors are using AI to reach property managers before you finish your coffee. The gap between tech-savvy and tech-ignorant contractors is widening fast.</p>
+                </div>
+            </div>
+
+            <div class="comparison-box">
+                <h3>Shared Leads vs. Exclusive Leads: The Math Doesn't Lie</h3>
+                <div class="comparison-row">
+                    <div class="comparison-item bad">
+                        <div class="percent">10-20%</div>
+                        <div class="label">Shared Lead Close Rate</div>
+                        <div class="sublabel">HomeAdvisor, Angi, Thumbtack</div>
+                    </div>
+                    <div class="comparison-item good">
+                        <div class="percent">40-60%</div>
+                        <div class="label">Exclusive Lead Close Rate</div>
+                        <div class="sublabel">Direct outreach, referrals, owned pipeline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION: Present DuctDrop -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-header">
+                <div class="solution-badge">✓ The Solution</div>
+                <h2>Exclusive HVAC Leads for <span>1/3 the Cost</span> — Predictable, Owned, Yours Alone</h2>
+                <p>DuctDrop uses cold email to start conversations directly with commercial property managers and homeowners. No middlemen. No shared leads. No race to the bottom.</p>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon-circle">🔒</div>
+                    <h3>100% Exclusive Leads</h3>
+                    <p>Every response comes only to you. No competing with 4 other contractors. When they reply, they're talking to YOU — and only you. That's how you close 40-60% instead of 10-20%.</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="icon-circle">📅</div>
+                    <h3>Predictable Weekly Flow</h3>
+                    <p>Stop the feast-or-famine cycle. Our system delivers 5-10 qualified conversations every week like clockwork. Know your pipeline. Plan your crew. Sleep better.</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="icon-circle">🤖</div>
+                    <h3>AI + Human Review</h3>
+                    <p>Our AI writes personalized emails at scale. Real humans review every sequence before it sends. You get automation speed with human quality. Best of both worlds.</p>
+                </div>
+                
+                <div class="solution-card">
+                    <div class="icon-circle">⚡</div>
+                    <h3>Launch in 24 Hours</h3>
+                    <p>No 3-month setup. No endless back-and-forth. Send us your target criteria (or we'll build your list), and you'll have your first emails out within a day.</p>
+                </div>
+            </div>
+
+            <div class="roi-highlight">
+                <div class="roi-stat">$40</div>
+                <div class="roi-label">Average Return Per $1 Spent on Email Marketing</div>
+                <div class="roi-sub">Compare that to the $2-3 return on shared lead platforms. The math is simple.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="how-header">
+                <h2>How DuctDrop Works</h2>
+                <p>From zero to booked appointments in 3 simple steps</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>We Build Your Target List</h3>
+                    <p>Give us your ideal customer profile — commercial property managers, HOA boards, facility directors, or homeowners. We'll source verified contacts in your service area. Or upload your own list.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Writes, Humans Review</h3>
+                    <p>Our AI creates personalized email sequences that sound like you wrote them. Real humans review every campaign for quality. We send, follow up, and nurture until they're ready to talk.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>You Get Booked Calls</h3>
+                    <p>Interested prospects reply directly to your inbox. We can even handle the back-and-forth and book appointments on your calendar. You just show up and close the deal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF + CTA FORM -->
+    <section class="social-proof-cta" id="lead-form">
+        <div class="container">
+            <div class="social-header">
+                <h2>What HVAC Contractors Say</h2>
+                <p>Contractors who made the switch from shared leads</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I was bleeding $3,000/month on HomeAdvisor for garbage leads. Switched to DuctDrop and I'm paying less than a third for leads that actually close. My close rate went from 15% to 45%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Mike Rodriguez</h4>
+                            <p>Elite HVAC Solutions, Phoenix AZ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The predictability is everything. I know I'm getting 6-8 qualified conversations every single week. No more wondering where next month's revenue is coming from."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JT</div>
+                        <div class="author-info">
+                            <h4>James Thompson</h4>
+                            <p>Thompson Heating & Air, Dallas TX</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Setup took literally one day. Emails started going out Monday, had my first booked call Tuesday. These aren't tire-kickers — they're property managers ready to replace units."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <h4>David Kim</h4>
+                            <p>Metro Climate Systems, Chicago IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEAD FORM -->
+            <div class="lead-form-section">
+                <h3>Get Your Free Quote</h3>
+                <p class="subhead">See how much you could save vs. HomeAdvisor. No obligation.</p>
+                
+                <form action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" placeholder="Smith HVAC" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@smithhvac.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="current_spend">Current Monthly Lead Spend</label>
+                        <select id="current_spend" name="current_spend" required>
+                            <option value="">Select an option</option>
+                            <option value="0">$0 (just getting started)</option>
+                            <option value="500">$500 - $1,000</option>
+                            <option value="1000">$1,000 - $2,500</option>
+                            <option value="2500">$2,500 - $5,000</option>
+                            <option value="5000">$5,000+</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get My Free Quote →</button>
+                </form>
+                
+                <div class="form-trust">
+                    <div class="trust-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        7-Day Money-Back Guarantee
+                    </div>
+                    <div class="trust-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        No Long-Term Contracts
+                    </div>
+                    <div class="trust-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Setup in 24 Hours
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE BAR -->
+    <div class="guarantee-bar">
+        <div class="container">
+            <p>🛡️ <span>100% Risk-Free:</span> 7-Day Money-Back Guarantee — Not happy? Full refund. No questions.</p>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        How is this different from buying leads on HomeAdvisor?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        HomeAdvisor sells the same lead to 3-5 contractors. You compete on price and speed. DuctDrop generates exclusive conversations — when someone replies, they're only talking to you. That's why our customers see 40-60% close rates vs. 10-20% on shared leads.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need my own email list?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Nope. We'll build your target list of property managers, facility directors, or homeowners in your service area. Or if you have your own list, we can work with that too. Either way, we handle the outreach.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How quickly will I start getting leads?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Most customers see first replies within 24-48 hours of campaign launch. We start with a small batch to optimize deliverability, then scale up. By week two, you'll have a predictable flow of conversations.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is cold email legal? Will it hurt my domain?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Yes, 100% legal under CAN-SPAM. We follow all best practices: domain warmup, proper authentication, unsubscribe links, and relevant targeting. We typically use a separate sending domain so your main business domain stays protected.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What kind of ROI can I expect?
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Most HVAC contractors see 3-5x ROI in month one. With exclusive leads converting at 40-60% (vs. 10-20% for shared), you typically make your investment back with 1-2 closed deals. Email marketing averages $40 return per $1 spent — compare that to shared lead platforms.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Renting Your Pipeline. Own It.</h2>
+            <p>Get exclusive HVAC leads for 1/3 the cost of HomeAdvisor. Predictable. Scalable. Yours.</p>
+            <a href="#lead-form" class="cta-button">Get My Free Quote →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DuctDrop. All rights reserved.</p>
+            <div style="margin-top: 16px;">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
